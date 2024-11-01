@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sudoku Grid</title>
+    <link rel="stylesheet" href="./style.css"></style>
+</head>
+<body>
+
+<h2>Sudoku Grid</h2>
+<div id="menu">
+    <p>Chose your difficulty</p>
+    <button class="easy-difficulty" id="easy-difficulty">Easy</button>
+    <button class="normal-difficulty" id="normal-difficulty">Medium</button>
+    <button class="hard-difficulty" id="hard-difficulty">Hard</button>
+    <button class="save-game" id="save-button" enabled>Save</button>
+    <button class="load-game" id="load-button" disabled>Load</button>
+</div>
+<div id="game">
+<table id="sudokuGrid" aria-rowcount="9">
+    <!-- Sudoku grid (9x9) -->
+    <tbody>
+        <!-- Row 1 -->
+        <tr>
+            <td class="thick-border-left thick-border-top" aria-rowindex="0" aria-colindex="0"></td>
+            <td class="thick-border-top" aria-rowindex="0"aria-colindex="1"></td>
+            <td class="thick-border-right thick-border-top" aria-rowindex="0"aria-colindex="2"></td>
+            <td class="thick-border-top" aria-rowindex="0"aria-colindex="3"></td>
+            <td class="thick-border-top" aria-rowindex="0"aria-colindex="4"></td>
+            <td class="thick-border-right thick-border-top" aria-rowindex="0"aria-colindex="5"></td>
+            <td class="thick-border-left thick-border-top" aria-rowindex="0" aria-colindex="6"></td>
+            <td class="thick-border-top" aria-rowindex="0" aria-colindex="7"></td>
+            <td class="thick-border-right thick-border-top" aria-rowindex="0" aria-colindex="8"></td>
+        </tr>
+        <!-- Row 2 -->
+        <tr>
+            <td class="thick-border-left" aria-rowindex="1" aria-colindex="0"></td>
+            <td aria-rowindex="1"aria-colindex="1"></td>
+            <td class="thick-border-right" aria-rowindex="1"aria-colindex="2"></td>
+            <td aria-rowindex="1"aria-colindex="3"></td>
+            <td aria-rowindex="1"aria-colindex="4"></td>
+            <td class="thick-border-right" aria-rowindex="1"aria-colindex="5"></td>
+            <td class="thick-border-left" aria-rowindex="1" aria-colindex="6"></td>
+            <td aria-rowindex="1" aria-colindex="7"></td>
+            <td class="thick-border-right" aria-rowindex="1" aria-colindex="8"></td>
+        </tr>
+        <!-- Row 3 -->
+        <tr>
+            <td class="thick-border-left thick-border-bottom" aria-rowindex="2"aria-colindex="0"></td>
+            <td class="thick-border-bottom" aria-rowindex="2"aria-colindex="1"></td>
+            <td class="thick-border-right thick-border-bottom" aria-rowindex="2"aria-colindex="2"></td>
+            <td class="thick-border-bottom" aria-rowindex="2"aria-colindex="3"></td>
+            <td class="thick-border-bottom" aria-rowindex="2"aria-colindex="4"></td>
+            <td class="thick-border-right thick-border-bottom" aria-rowindex="2"aria-colindex="5"></td>
+            <td class="thick-border-left thick-border-bottom" aria-rowindex="2" aria-colindex="6"></td>
+            <td class="thick-border-bottom" aria-rowindex="2" aria-colindex="7"></td>
+            <td class="thick-border-right thick-border-bottom" aria-rowindex="2" aria-colindex="8"></td>
+        </tr>
+        <!-- Row 4 -->
+        <tr>
+            <td class="thick-border-left" aria-rowindex="3"aria-colindex="0"></td>
+            <td aria-rowindex="3"aria-colindex="1"></td>
+            <td class="thick-border-right" aria-rowindex="3"aria-colindex="2"></td>
+            <td aria-rowindex="3"aria-colindex="3"></td>
+            <td aria-rowindex="3"aria-colindex="4"></td>
+            <td class="thick-border-right" aria-rowindex="3"aria-colindex="5"></td>
+            <td class="thick-border-left" aria-rowindex="3" aria-colindex="6"></td>
+            <td aria-rowindex="3" aria-colindex="7"></td>
+            <td class="thick-border-right" aria-rowindex="3" aria-colindex="8"></td>
+        </tr>
+        <!-- Row 5 -->
+        <tr>
+            <td class="thick-border-left" aria-rowindex="4"aria-colindex="0"></td>
+            <td aria-rowindex="4"aria-colindex="1"></td>
+            <td class="thick-border-right" aria-rowindex="4"aria-colindex="2"></td>
+            <td aria-rowindex="4"aria-colindex="3"></td>
+            <td aria-rowindex="4"aria-colindex="4"></td>
+            <td class="thick-border-right" aria-rowindex="4"aria-colindex="5"></td>
+            <td class="thick-border-left" aria-rowindex="4" aria-colindex="6"></td>
+            <td aria-rowindex="4" aria-colindex="7"></td>
+            <td class="thick-border-right" aria-rowindex="4" aria-colindex="8"></td>
+        </tr>
+        <!-- Row 6 -->
+        <tr id="row6" >
+            <td class="thick-border-left thick-border-bottom" aria-rowindex="5" aria-colindex="0"></td>
+            <td class="thick-border-bottom" aria-rowindex="5"aria-colindex="1"></td>
+            <td class="thick-border-right thick-border-bottom" aria-rowindex="5"aria-colindex="2"></td>
+            <td class="thick-border-bottom" aria-rowindex="5"aria-colindex="3"></td>
+            <td class="thick-border-bottom" aria-rowindex="5"aria-colindex="4"></td>
+            <td class="thick-border-right thick-border-bottom" aria-rowindex="5"aria-colindex="5"></td>
+            <td class="thick-border-left thick-border-bottom" aria-rowindex="5" aria-colindex="6"></td>
+            <td class="thick-border-bottom" aria-rowindex="5" aria-colindex="7"></td>
+            <td class="thick-border-right thick-border-bottom" aria-rowindex="5" aria-colindex="8"></td>
+        </tr>
+        <!-- Row 7 -->
+        <tr>
+            <td class="thick-border-left" aria-rowindex="6" aria-colindex="0"></td>
+            <td aria-rowindex="6" aria-colindex="1"></td>
+            <td class="thick-border-right" aria-rowindex="6" aria-colindex="2"></td>
+            <td aria-rowindex="6" aria-colindex="3"></td>
+            <td aria-rowindex="6" aria-colindex="4"></td>
+            <td class="thick-border-right" aria-rowindex="6" aria-colindex="5"></td>
+            <td class="thick-border-left" aria-rowindex="6" aria-colindex="6"></td>
+            <td id="cell8" aria-rowindex="6" aria-colindex="7"></td>
+            <td class="thick-border-right" aria-rowindex="6" aria-colindex="8" ></td>
+        </tr>
+        <!-- Row 8 -->
+        <tr>
+            <td class="thick-border-left" aria-rowindex="7" aria-colindex="0"></td>
+            <td aria-rowindex="7" aria-colindex="1"></td>
+            <td class="thick-border-right" aria-rowindex="7" aria-colindex="2"></td>
+            <td aria-rowindex="7" aria-colindex="3"></td>
+            <td aria-rowindex="7" aria-colindex="4"></td>
+            <td class="thick-border-right" aria-rowindex="7" aria-colindex="5"></td>
+            <td class="thick-border-left" aria-rowindex="7" aria-colindex="6"></td>
+            <td aria-rowindex="7" aria-colindex="7"></td>
+            <td class="thick-border-right" aria-rowindex="7" aria-colindex="8"></td>
+        </tr>
+        <!-- Row 9 -->
+        <tr>
+            <td class="thick-border-left thick-border-bottom" aria-rowindex="8" aria-colindex="0"></td>
+            <td class="thick-border-bottom"  aria-rowindex="8" aria-colindex="1"></td>
+            <td class="thick-border-right thick-border-bottom"  aria-rowindex="8" aria-colindex="2"></td>
+            <td class="thick-border-bottom" aria-rowindex="8" aria-colindex="3"></td>
+            <td class="thick-border-bottom" aria-rowindex="8" aria-colindex="4"></td>
+            <td class="thick-border-right thick-border-bottom" aria-rowindex="8" aria-colindex="5"></td>
+            <td class="thick-border-left thick-border-bottom" aria-rowindex="8" aria-colindex="6"></td>
+            <td class="thick-border-bottom"  aria-rowindex="8" aria-colindex="7"></td>
+            <td class="thick-border-right thick-border-bottom" aria-rowindex="8" aria-colindex="8"></td>
+        </tr>
+    </tbody>
+</table>
+<div class="buttons-container">
+    <!-- Number selection buttons -->
+    <button class="number-button selected" onclick="selectNumber(1)">1</button>
+    <button class="number-button" onclick="selectNumber(2)">2</button>
+    <button class="number-button" onclick="selectNumber(3)">3</button>
+    <button class="number-button" onclick="selectNumber(4)">4</button>
+    <button class="number-button" onclick="selectNumber(5)">5</button>
+    <button class="number-button" onclick="selectNumber(6)">6</button>
+    <button class="number-button" onclick="selectNumber(7)">7</button>
+    <button class="number-button" onclick="selectNumber(8)">8</button>
+    <button class="number-button" onclick="selectNumber(9)">9</button>
+    <button class="number-button" onclick="selectNumber(0)">Delete</button>
+</div>
+
+</div>
+<div class="win-container" id="win-container">
+    <p>You won! Do you want to start over?</p>
+</div>
+<script src="./script.js">
+   
+</script>
+
+</body>
+</html>
